@@ -1,28 +1,16 @@
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * Delete the template below * * * * * * * * * -->
-<!-- * * * * * * * to get started with your project! * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 <main class="main w-full h-full bg-[#FAF9F6]">
-  <p class="">real</p>
+  <div class="w-full flex flex-col justify-center py-4 items-center">
+    <img class="h-24" src="https://www.pngkey.com/png/full/170-1704373_harry-potter-scar-png.png" alt="">
+    <h1 class="text-center text-3xl font-semibold">Potterhead</h1>
+  </div>
   <div class="flex flex-wrap p-4 justify-center">
     <div class="flex p-4" *ngFor="let character of characters">
-      <app-info-card [item]="character"></app-info-card>
+      <button data-modal-target="characterModal" data-modal-toggle="characterModal" (click)="openModal(character)">
+        <app-info-card [item]="character"></app-info-card>
+      </button>
     </div>
   </div>
+  <app-modal *ngIf="selectedCharacter" [character]="selectedCharacter" (closeModal)="closeModal()"></app-modal>
 </main>
-
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * The content above * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * * -->
-<!-- * * * * * * * * * * and can be replaced.  * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
-<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
-
 
 <router-outlet />

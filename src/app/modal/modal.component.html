@@ -1,1 +1,74 @@
-<p>modal works!</p>
+<div class="fixed top-0 right-0 left-0 z-50 flex justify-center items-center w-full h-full bg-black bg-opacity-50 p-4"
+    aria-hidden="true" tabindex="-1" id="characterModal">
+    <div>
+        <div class="modal-content w-fit bg-[#FAF9F6] p-4 rounded-lg">
+            <div class="w-full flex flex-col md:flex-row items-start gap-4">
+                <div class="flex flex-col w-[19.2rem]">
+                    <div class="aspect-ratio-45 rounded-md overflow-hidden">
+                        <img [src]="character?.image || placeholder" alt="{{character?.name}}">
+                    </div>
+                    <div class="magical-attributes mt-2"
+                        *ngIf="character?.wand?.wood || character?.wand?.core || character?.wand?.length || character?.patronus || character?.wizard !== undefined">
+                        <h2 class="text-2xl font-semibold">Magical Attributes</h2>
+                        <p *ngIf="character?.wand?.wood"><strong>Wand:</strong>
+                            {{ character?.wand?.wood ? character?.wand?.wood + ', ' : '' }}
+                            {{ character?.wand?.core ? character?.wand?.core + ', ' : '' }}
+                            {{ character?.wand?.length ? character?.wand?.length + ' inches' : '' }}
+                        </p>
+                        <p *ngIf="character?.patronus"><strong>Patronus:</strong> {{ character?.patronus }}</p>
+                        <p *ngIf="character?.wizard !== undefined"><strong>Wizard:</strong> {{ character?.wizard ? 'Yes'
+                            : 'No' }}</p>
+                    </div>
+                </div>
+                <div class="flex flex-col">
+                    <div class="flex gap-8 justify-between items-start">
+                        <div>
+                            <h2 class="text-3xl text-nowrap"><strong>{{ character?.name }}</strong></h2>
+                            <p class="text-lg text-gray-500 italic" *ngIf="character?.alternate_names?.length">{{
+                                character?.alternate_names?.join(', ') }}</p>
+                        </div>
+                        <button class="modal-close" (click)="onClose()">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="#000000"
+                                viewBox="0 0 256 256">
+                                <path
+                                    d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z">
+                                </path>
+                            </svg>
+                        </button>
+
+                    </div>
+                    <div class="personal-info mt-2"
+                        *ngIf="character?.species || character?.gender || character?.dateOfBirth || character?.ancestry || character?.alive !== undefined">
+                        <h2 class="text-2xl font-semibold">Personal Information</h2>
+                        <p *ngIf="character?.species"><strong>Species:</strong> {{ character?.species }}</p>
+                        <p *ngIf="character?.gender"><strong>Gender:</strong> {{ character?.gender }}</p>
+                        <p *ngIf="character?.dateOfBirth"><strong>Date of Birth:</strong> {{ character?.dateOfBirth }}
+                        </p>
+                        <p *ngIf="character?.ancestry"><strong>Ancestry:</strong> {{ character?.ancestry }}</p>
+                        <p *ngIf="character?.alive !== undefined"><strong>Alive:</strong> {{ character?.alive ? 'Yes' :
+                            'No' }}</p>
+                    </div>
+                    <div class="hogwarts-info mt-2"
+                        *ngIf="character?.house || character?.hogwartsStudent !== undefined || character?.hogwartsStaff !== undefined">
+                        <h2 class="text-2xl font-semibold">Hogwarts Information</h2>
+                        <p *ngIf="character?.house"><strong>House:</strong> {{ character?.house }}</p>
+                        <p *ngIf="character?.hogwartsStudent !== undefined"><strong>Hogwarts Student:</strong> {{
+                            character?.hogwartsStudent ? 'Yes' : 'No' }}</p>
+                        <p *ngIf="character?.hogwartsStaff !== undefined"><strong>Hogwarts Staff:</strong> {{
+                            character?.hogwartsStaff ? 'Yes' : 'No' }}</p>
+                    </div>
+                    <div class="appearance-info mt-2" *ngIf="character?.eyeColour || character?.hairColour">
+                        <h2 class="text-2xl font-semibold">Physical Appearance</h2>
+                        <p *ngIf="character?.eyeColour"><strong>Eye Colour:</strong> {{ character?.eyeColour }}</p>
+                        <p *ngIf="character?.hairColour"><strong>Hair Colour:</strong> {{ character?.hairColour }}</p>
+                    </div>
+                    <div class="additional-info mt-2"
+                        *ngIf="character?.actor || (character?.alternate_actors && character?.alternate_actors?.length)">
+                        <h2 class="text-2xl font-semibold">Additional Information</h2>
+                        <p *ngIf="character?.actor"><strong>Actor:</strong> {{ character?.actor }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
