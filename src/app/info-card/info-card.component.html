@@ -1,0 +1,13 @@
+<!-- info-card.component.html -->
+<div class="w-48 shadow-2xl p-4 rounded-md hover:scale-110 transition-transform " *ngIf="item">
+  <div class="w-full rounded-md h-56 overflow-hidden">
+    <img class="object-cover w-full h-full" [src]="item.image || placeholder" alt="{{item.name}}">
+  </div>
+  <div class="flex justify-center items-center h-16">
+    <h2 class="text-center font-semibold">{{item.name}}</h2>
+  </div>
+</div>
+<div *ngIf="!item">
+  No item data available.
+</div>
+
