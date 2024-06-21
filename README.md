@@ -7,3 +7,4 @@
 - [x] Create character card component
 - [x] Create character info modal component
 - [x] Add logo & favicon
+- [ ] Fix modal when on mobile
